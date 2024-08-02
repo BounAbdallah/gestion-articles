@@ -1,0 +1,18 @@
+<!-- <div>
+  <h2>{{ isEditMode ? 'Modifier l\'article' : 'Ajouter un article' }}</h2>
+  <form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
+    <label>Titre:</label>
+    <input formControlName="title" />
+    <div *ngIf="articleForm.get('title')?.invalid && (articleForm.get('title')?.touched || articleForm.get('title')?.dirty)">
+      Title is required and should be at least 5 characters long.
+    </div>
+
+    <label>Contenu:</label>
+    <textarea formControlName="body"></textarea>
+    <div *ngIf="articleForm.get('body')?.invalid && (articleForm.get('body')?.touched || articleForm.get('body')?.dirty)">
+      Body is required and should be at least 10 characters long.
+    </div>
+
+    <button type="submit">{{ isEditMode ? 'Mis à jour' : 'Créer' }}</button>
+  </form>
+</div> -->

@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="form-container">
+    <h2>{{ isEditMode ? 'Modifier l\'article' : 'Ajouter un article' }}</h2>
+    <form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="title">Titre:</label>
+        <input id="title" class="form-control" formControlName="title" />
+        <div class="error-message" *ngIf="articleForm.get('title')?.invalid && (articleForm.get('title')?.touched || articleForm.get('title')?.dirty)">
+          Title is required and should be at least 5 characters long.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="body">Contenu:</label>
+        <textarea id="body" class="form-control" formControlName="body"></textarea>
+        <div class="error-message" *ngIf="articleForm.get('body')?.invalid && (articleForm.get('body')?.touched || articleForm.get('body')?.dirty)">
+          Body is required and should be at least 10 characters long.
+        </div>
+      </div>
+  
+      <button type="submit" class="btn-submit">{{ isEditMode ? 'Mis à jour' : 'Créer' }}</button>
+    </form>
+  </div>
+  
+  <div class="row">
+    <div class="article_" *ngFor="let article of paginatedArticles">
+      <a [routerLink]="['/article', article.id]">
+        <div class="article">
+          <h3>{{ article.title }}</h3>
+          <p>{{ article.body }}</p>
+        </div>
+      </a>
+      <div class="article-action">
+        <div class="btn">
+          <a [routerLink]="['/article-form', article.id]">Modifier</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="pagination">
+    <button (click)="previousPage()" [disabled]="currentPage === 1">Précedent</button>
+    <button (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= articles.length">Suivant</button>
+  </div>
+</div>

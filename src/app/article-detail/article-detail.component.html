@@ -1,0 +1,17 @@
+<div *ngIf="article; else noArticle">
+  <div class="article-detail">
+    <h1>{{ article.title }}</h1>
+    <p>{{ article.body }}</p>
+    <div class="actions">
+      <button (click)="deleteArticle()" class="btn btn-danger">Supprimer l'article</button>
+      <a routerLink="/articles" class="btn btn-secondary">Retour à la liste</a>
+    </div>
+  </div>
+</div>
+
+<ng-template #noArticle>
+  <div class="no-article">
+    <p>Aucun article trouvé.</p>
+    <a routerLink="/articles" class="btn btn-secondary">Retour à la liste</a>
+  </div>
+</ng-template>
